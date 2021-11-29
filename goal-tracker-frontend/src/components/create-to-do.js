@@ -1,7 +1,7 @@
 import {React , useState} from 'react';
 import {  Link } from "react-router-dom";
 import axios from 'axios';
-import { useNavigate , useParams  } from "react-router-dom";
+import { useNavigate   } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 const CreateToDo = () => {
@@ -10,7 +10,6 @@ const CreateToDo = () => {
     const [inputs, setInputs] = useState({'user_id': cookies.user_id});
     const [errors, setErrors] = useState({});
     const  navigate  = useNavigate ();
-    const params = useParams()
 
     // yuo can find all params from here
     const handleChange = (event) => {
@@ -37,7 +36,7 @@ const CreateToDo = () => {
         .then(res =>
             {
               console.log(res)
-              if(res.data.statusCode == 200)
+              if(res.data.statusCode === 200)
               {
              
               navigate('/to-do-list');

@@ -18,7 +18,7 @@ const ToDoList = () => {
     function getToDoTaskList() {
         axios.get(`http://localhost:3002/user/getToDoList/${cookies.user_id}`)
             .then(res => {
-                if (res.data.statusCode == 200) {
+                if (res.data.statusCode === 200) {
 
                     setToDoLists(res.data.data)
                 }
@@ -31,7 +31,7 @@ const ToDoList = () => {
         axios.get('http://localhost:3002/user/deleteToDoDetails/' + task_id)
             .then(response => {
 
-                if (response.data.statusCode == 200) {
+                if (response.data.statusCode === 200) {
                     getToDoTaskList();
 
                 }

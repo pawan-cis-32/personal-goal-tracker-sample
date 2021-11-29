@@ -16,7 +16,7 @@ const UpdateToDo = () => {
         axios.get(`http://localhost:3002/user/getToDoDetails/${params.id}`)
         .then(res =>
             {
-              if(res.data.statusCode == 200)
+              if(res.data.statusCode === 200)
               {
              
                 setInputs(res.data.data)
@@ -51,7 +51,7 @@ const UpdateToDo = () => {
         .then(res =>
             {
               console.log(res)
-              if(res.data.statusCode == 200)
+              if(res.data.statusCode === 200)
               {
              
               navigate('/to-do-list');

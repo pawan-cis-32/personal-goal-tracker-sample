@@ -36,7 +36,7 @@ else if (!inputs.password) {
     .then(res =>
         {
           console.log(res)
-          if(res.data.statusCode == 200)
+          if(res.data.statusCode === 200)
           {
           setCookie("user_id", res.data.data.user_id, {
             path: "/"
