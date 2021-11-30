@@ -1,4 +1,5 @@
 import initUserRoutes from './userRoutes';
+import initUtilityRoutes from './utilityRoutes';
 import express from 'express';
 import { path, join } from 'path';
 
@@ -7,6 +8,7 @@ import { path, join } from 'path';
 
 const initRoutes = (app) => {
   app.use(`/user`, initUserRoutes());
+  app.use(`/utility`, initUtilityRoutes());
 
 
 

@@ -28,11 +28,10 @@ CREATE TABLE `to_do_task` (
   `task_description` varchar(300) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `create_at` datetime DEFAULT NULL,
-  `task_file` varchar(155) DEFAULT NULL,
   PRIMARY KEY (`task_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `to_do_task_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +40,7 @@ CREATE TABLE `to_do_task` (
 
 LOCK TABLES `to_do_task` WRITE;
 /*!40000 ALTER TABLE `to_do_task` DISABLE KEYS */;
-INSERT INTO `to_do_task` VALUES (1,'Task app','Create task app goal',1,'2021-11-29 16:14:58',NULL),(7,'Task to create sample','Use react js to create web app.',3,'2021-11-29 20:10:13',NULL),(8,'Task to create skill pages','Create skill pages on react js',3,'2021-11-29 21:00:20',NULL),(9,'Create task ffor web app and back end','Create app to provide task to group.',3,'2021-11-30 14:16:37',NULL),(10,'Create app to listen song','Song web app.',3,'2021-11-30 14:19:00','github_logo_1638262140340.png'),(12,'task for people','rfergtgrytyh',3,'2021-11-30 14:37:33',NULL);
+INSERT INTO `to_do_task` VALUES (1,'Task app','Create task app goal',1,'2021-11-29 16:14:58'),(7,'Task to create sample','Use react js to create web app.',3,'2021-11-29 20:10:13');
 /*!40000 ALTER TABLE `to_do_task` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-30 16:27:01
+-- Dump completed on 2021-11-29 20:29:26

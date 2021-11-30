@@ -8,6 +8,7 @@ import MysqlPool from '../../lib/mysqlDb';
 import connConfig from '../../lib/mysql2';
 import CONSTANTS from '../../config/constants';
 import userService from './../service/userService';
+import fs from 'fs';
 
 const saltRounds = 8;
 
@@ -62,6 +63,7 @@ export default class UserController {
         task_title: req.body.task_title,
         task_description: req.body.task_description,
         user_id: req.body.user_id,
+        task_file: req.body.task_file, 
         create_at: new Date(),
     };
     let datafromService = await userService.createToDoTask(taskData);
@@ -117,10 +119,26 @@ export default class UserController {
 
  // To delete to do details
  static async deleteToDoDetails(req, res) {
+    let getToDoDetails = await userService.getToDoByTaskId(req.params.task_id);
     let getToDoListFromDB = await userService.deleteToDoTask(req.params.task_id);
     if (getToDoListFromDB.statusCode === CONSTANTS.SUCCESS) {
+        if (getToDoDetails.data.task_file != null && getToDoDetails.data.task_file != '' && getToDoDetails.data.task_file != undefined) {
+            let path = `./public/uploads/${getToDoDetails.data.task_file}`
+            fs.exists(`./public/uploads/${getToDoDetails.data.task_file}`, function (exists) {
+                if (exists) {
+                    fs.unlink(path, (err) => {
+                        if (err) {
+                            return Responder.success(res, { msg: "Please try again (502).", statusCode: 301, status: true, data: {}, })
+                        }
+                    })
+                    return Responder.success(res, { statusCode: 200, status: true, data: getToDoListFromDB.data, msg: " To do details updated successfully." })
+                } else {
+                    return Responder.success(res, { msg: "File not found.", statusCode: 301, status: true, data: {}, })
+                }
+            });
+        }
+        else
         return Responder.success(res, { statusCode: 200, status: true, data: getToDoListFromDB.data, msg: " To do details updated successfully." })
-
     }
     else
     return Responder.success(res, { statusCode: 301, status: false, msg: "Error ." })
