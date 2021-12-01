@@ -82,7 +82,7 @@ const ToDoList = () => {
     return (
         <div>
             <h3 className="create-to-do"> <Link to="/create-to-do" >Create to do task</Link> </h3>
-            <a className="logout-btn" onClick={() => { logout() }}> Logout </a>
+            <button className="logout-btn" onClick={() => { logout() }}> Logout </button>
             <table className="table table-striped" style={{ marginTop: 20 }} >
                 <thead>
                     <tr>
